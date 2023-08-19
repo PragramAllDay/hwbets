@@ -1,0 +1,27 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  gap: 10px;
+  list-style-type: none;
+}
+/* .pagination li:active {
+  background: #1aa3bb;
+} */
+.pagination li:hover {
+  background: #1aa3bb;
+}
+.pagination li {
+  padding: 5px 10px;
+  background: #171923;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+}
+
+.active {
+  background-color: #1aa3bb;
+}
