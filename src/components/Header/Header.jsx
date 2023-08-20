@@ -49,9 +49,9 @@ export default function Header() {
         justifyContent={"space-evenly"}
       >
         <Flex
-          flex={{ base: 1, md: "auto" }}
-          ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}
+          flex={{ base: 1, md: 1, lg: "auto" }}
+          ml={{ base: "-1rem", md: "-2rem" }}
+          display={{ base: "flex", md: "flex", lg: "none" }}
         >
           <IconButton
             onClick={onToggle}
@@ -63,21 +63,21 @@ export default function Header() {
           />
         </Flex>
         <Text
-          textAlign={{ base: "center", md: "left" }}
+          textAlign={{ base: "center", md: "center" }}
           fontFamily={"heading"}
           fontWeight={900}
           sx={{
             fontFamily: "heading",
           }}
           color={useColorModeValue("gray.800", "white")}
-          display={{ base: "none", md: "flex" }}
+          display={{ base: "flex", md: "flex" }}
           onClick={() => navigate("/")}
           cursor={"pointer"}
         >
           Logo
         </Text>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "center" }}>
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
+          <Flex display={{ base: "none", md: "none", lg: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
@@ -137,7 +137,7 @@ const DesktopNav = () => {
                 fontSize={"sm"}
                 fontWeight={900}
                 color={linkColor}
-                display={"flex"}
+                display={{ base: "none", md: "none", lg: "flex" }}
                 alignItems={"center"}
                 gap={2}
                 _hover={{
@@ -216,18 +216,18 @@ const MobileNav = () => {
     <Stack
       bg={useColorModeValue("white", "gray.800")}
       p={4}
-      display={{ md: "none" }}
+      display={{ md: "flex", lg: "none" }}
     >
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
+        <MobileNavItem key={navItem.label} {...navItem} icon={navItem.icon} />
       ))}
     </Stack>
   );
 };
 
-const MobileNavItem = ({ label, icon, children, href }) => {
+const MobileNavItem = ({ label, children, href, icon }) => {
   const { isOpen, onToggle } = useDisclosure();
-
+  console.log(icon);
   return (
     <Stack spacing={4} onClick={children && onToggle}>
       <Box
@@ -240,7 +240,7 @@ const MobileNavItem = ({ label, icon, children, href }) => {
           textDecoration: "none",
         }}
       >
-        {icon}
+        {/* {icon} */}
         <Text
           fontWeight={600}
           color={useColorModeValue("gray.600", "gray.200")}

@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Flex,
   Heading,
   Image,
@@ -7,6 +8,7 @@ import {
   Text,
   UnorderedList,
   chakra,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
 import Header from "../../components/Header/Header";
@@ -18,6 +20,11 @@ import ChatBox from "../../components/ChatBox/ChatBox";
 import AnimatedHeadings from "../../components/AnimatedHeading/AnimatedHeading";
 import BettingCard from "../../components/BettingCard/BettingCard";
 import PlayerCard from "../../components/PlayerCard/PlayerCard";
+import { GrNext, GrPrevious } from "react-icons/gr";
+import AnimatedButton from "../../components/Button/Button";
+import ChatModal from "../../components/ChatModal/ChatModal";
+import AnimatedBtn from "../../components/AnimatedButton/AnimatedBtn";
+import PreviousPlayerModal from "../../components/PreviousPlayersModal/PreviousPlayerModal";
 const Betting = () => {
   const names = [
     "John Doe",
@@ -66,9 +73,21 @@ const Betting = () => {
   ];
   const pageSize = 20;
   const [page, setPage] = React.useState(0);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [open, setOpen] = React.useState(false);
   return (
     <>
       <Header />
+      <div className="flexTop">
+        <Box w={"100%"} onClick={() => setOpen(true)}>
+          <AnimatedBtn title="Previous Players"></AnimatedBtn>
+        </Box>
+        <Box mt={"2rem"} w={"100%"} onClick={onOpen}>
+          <AnimatedBtn title="Chat Live"></AnimatedBtn>
+        </Box>
+        <ChatModal isOpen={isOpen} onClose={onClose} />
+        {open && <PreviousPlayerModal open={open} setOpen={setOpen} />}
+      </div>
       <div class="flex-container">
         <aside>
           <Heading fontSize={"1.1rem"} textAlign={"center"}>

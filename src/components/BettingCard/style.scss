@@ -78,7 +78,7 @@ $size: 12px;
     &__score {
       position: relative;
       float: left;
-      height: 55px;
+      height: 100%;
       padding: 0 $size * 2;
 
       h5 {
@@ -490,5 +490,24 @@ path {
     + .wrap {
       width: 640px;
     }
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  .wrap {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .card {
+    height: auto !important;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .card-left,
+  .card-right {
+    width: 100%;
+    float: none;
   }
 }
